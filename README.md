@@ -349,12 +349,6 @@ MIT License - Sinta-se livre para usar em projetos educacionais ou comerciais.
 - **Exemplos**: `examples/run_exchange_journey.py` - 4 cenários via script
 - **Issues**: Abra uma issue no GitHub
 
-## Agradecimentos
-
-- **LangChain**: Framework incrível para AI agents
-- **Groq**: API rápida e gratuita
-- **Anthropic**: Conceitos de AI engineering
-
 ---
 
 **Desenvolvido como MVP educacional para workshop de AI Agents**
