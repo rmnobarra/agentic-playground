@@ -1,6 +1,16 @@
 # 🌐 Interface Web - Guia de Uso
 
-## Como Executar
+## 🚀 Demo Online
+
+**Acesse agora sem instalar nada:**
+
+👉 **https://agentic-playground.streamlit.app/**
+
+A interface está disponível publicamente na Streamlit Cloud!
+
+---
+
+## 💻 Como Executar Localmente
 
 ### 1. Instalar Streamlit (se ainda não instalou)
 

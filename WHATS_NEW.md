@@ -1,10 +1,16 @@
-# 🎉 Novidades - Interface Web Implementada!
+# 🎉 Novidades - Interface Web Implementada e Online!
 
 ## 🌐 Interface Web com Streamlit
 
 O sistema agora possui uma **interface web completa** para visualizar e executar a jornada agêntica no browser!
 
-### Como Usar
+### 🚀 Demo Online (NOVO!)
+
+**Acesse agora sem instalar:** https://agentic-playground.streamlit.app/
+
+Deploy realizado na Streamlit Cloud - totalmente funcional e gratuito!
+
+### 💻 Como Usar Localmente
 
 ```bash
 # Método 1: Script automático
@@ -208,17 +214,22 @@ A interface web é **perfeita para**:
 
 ---
 
-## 🚀 Deploy (Opcional)
+## 🚀 Deploy na Streamlit Cloud
 
-### Streamlit Cloud (Grátis!)
+### ✅ Deploy Realizado!
 
-1. Faça commit no GitHub
-2. Acesse https://streamlit.io/cloud
-3. Conecte o repositório
-4. Configure `GROQ_API_KEY` nos secrets
-5. Deploy automático! 🎉
+A interface está disponível publicamente em:
 
-A interface ficará disponível em: `https://seu-app.streamlit.app`
+👉 **https://agentic-playground.streamlit.app/**
+
+### Como foi feito:
+
+1. ✅ Commit no GitHub
+2. ✅ Conectado ao Streamlit Cloud
+3. ✅ Configurado `GROQ_API_KEY` nos secrets
+4. ✅ Deploy automático realizado!
+
+**Resultado:** Interface web totalmente funcional e acessível de qualquer lugar! 🎉
 
 ---
 

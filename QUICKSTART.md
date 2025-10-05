@@ -27,13 +27,21 @@ cp .env.example .env
 
 ### 3. Executar Interface Web
 
+**🚀 Opção 1: Demo Online (Recomendado)**
+
+Acesse: **https://agentic-playground.streamlit.app/**
+
+Não precisa instalar nada! Use diretamente no browser.
+
+**💻 Opção 2: Rodar Localmente**
+
 ```bash
 streamlit run app.py
 ```
 
 Acesse: **http://localhost:8501**
 
-**OU** execute via script:
+**📝 Opção 3: Script Python**
 
 ```bash
 cd examples

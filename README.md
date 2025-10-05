@@ -1,8 +1,15 @@
 # 🤖 Jornada Agêntica - Sistema de Troca de Produtos
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://agentic-playground.streamlit.app/)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![LangChain](https://img.shields.io/badge/🦜_LangChain-Framework-green.svg)](https://langchain.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 MVP de sistema agêntico para automação de processos de backoffice de varejo, focado em trocas de produtos.
 
-> **🌐 NOVIDADE**: Agora com interface web interativa! Execute `streamlit run app.py` para usar no browser.
+> **🌐 DEMO ONLINE**: Acesse a interface web em https://agentic-playground.streamlit.app/
+>
+> **💻 LOCAL**: Execute `streamlit run app.py` para rodar localmente
 
 ## Visão Geral
 
@@ -101,7 +108,11 @@ Obtenha sua API key gratuita em: https://console.groq.com/keys
 
 ### 🌐 Interface Web (Recomendado)
 
-Execute a interface web com **Streamlit**:
+**🚀 Demo Online (Deploy na Streamlit Cloud):**
+
+Acesse: **https://agentic-playground.streamlit.app/**
+
+**💻 Executar Localmente:**
 
 ```bash
 streamlit run app.py
@@ -307,7 +318,6 @@ Com Groq (free tier):
 - Mocks ao invés de APIs reais
 - Análise de imagem não implementada (apenas simulada)
 - Sem persistência em banco de dados
-- Sem interface de usuário
 - Sem autenticação/autorização
 - Documentos sintéticos (não lê PDFs reais)
 
@@ -316,6 +326,7 @@ Com Groq (free tier):
 ### Features Planejadas
 
 - ✅ **Interface web (Streamlit)** - IMPLEMENTADO!
+- ✅ **Deploy em Streamlit Cloud** - ONLINE! (https://agentic-playground.streamlit.app/)
 - Integração com APIs reais
 - Análise de imagens (OCR de documentos)
 - Banco de dados (PostgreSQL)

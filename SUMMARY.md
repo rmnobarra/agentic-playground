@@ -21,7 +21,15 @@
 
 ## 🚀 Como Executar
 
-### Opção 1: Interface Web (Recomendado)
+### Opção 1: Demo Online (Mais Fácil!)
+
+**Acesse direto no browser:**
+
+👉 **https://agentic-playground.streamlit.app/**
+
+Sem instalar nada! Deploy na Streamlit Cloud.
+
+### Opção 2: Interface Web Local
 
 ```bash
 ./start_web.sh
@@ -29,9 +37,9 @@
 streamlit run app.py
 ```
 
-Abre automaticamente em: http://localhost:8501
+Abre em: http://localhost:8501
 
-### Opção 2: Script Python
+### Opção 3: Script Python
 
 ```bash
 cd examples
@@ -187,12 +195,12 @@ Python 3.9+
 ## 🚀 Próximos Passos
 
 - [x] **Interface Web** - IMPLEMENTADO!
+- [x] **Deploy em Streamlit Cloud** - ONLINE! (https://agentic-playground.streamlit.app/)
 - [ ] Upload de documentos (PDF/imagem)
 - [ ] OCR de notas fiscais
 - [ ] Integração com APIs reais
 - [ ] Banco de dados (PostgreSQL)
 - [ ] Dashboard de métricas
-- [ ] Deploy em Streamlit Cloud
 - [ ] Human-in-the-loop
 - [ ] Chat com os agents
 - [ ] LangGraph para workflows complexos
