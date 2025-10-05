@@ -1,6 +1,26 @@
 # Conceitos Fundamentais de AI Engineering Aplicados
 
-Este documento explica os conceitos de AI Engineering implementados no MVP de Jornada Agêntica de Troca de Produtos.
+Este documento explica os 17 conceitos de AI Engineering implementados no MVP de Jornada Agêntica de Troca de Produtos.
+
+## Índice de Conceitos
+
+1. **LangChain Framework** - Framework para aplicações com LLMs
+2. **ReAct Pattern** - Reasoning + Acting para agents autônomos
+3. **Tools** - Interface entre LLMs e sistemas externos
+4. **Specialized Agents** - Decomposição em agents especializados
+5. **Orchestration Pattern** - Coordenação de múltiplos agents
+6. **RAG** - Retrieval Augmented Generation
+7. **Prompt Engineering** - Design de prompts eficazes
+8. **Temperature & Determinismo** - Controle de aleatoriedade
+9. **Error Handling** - Tratamento robusto de erros
+10. **Observability** - Logging e auditoria
+11. **Separation of Concerns** - Modularização e responsabilidades
+12. **Custom Output Parser** - Parser robusto para JSON
+13. **Early Stopping** - Prevenção de loops infinitos
+14. **Conditional Workflows** - Lógica condicional na jornada
+15. **Pydantic Schemas** - Validação de dados estruturados
+16. **Mock Services** - Simulação para testes
+17. **Facade Pattern** - Interface simplificada
 
 ---
 
@@ -399,7 +419,79 @@ Cada camada tem responsabilidade clara e pode evoluir independentemente.
 
 ---
 
-## 12. Conditional Workflows
+## 12. Custom Output Parser
+
+### O que é?
+Um parser customizado que lida com JSON mal formatado retornado pelo LLM.
+
+### Problema que resolve:
+LLMs às vezes geram JSON com problemas:
+- Double-encoding: `{"cpf": "{\"cpf\":\"123\"}"}`
+- Aspas extras ou faltantes
+- Formatação inconsistente
+
+### Solução implementada:
+
+```python
+# src/agents/output_parser_fix.py
+class RobustJSONAgentOutputParser(AgentOutputParser):
+    def _parse_json_robust(self, json_str: str) -> dict:
+        # Estratégia 1: Parse direto
+        try:
+            return json.loads(json_str)
+        except:
+            pass
+
+        # Estratégia 2: Remove aspas externas
+        # Estratégia 3: Regex para extrair
+        # Estratégia 4: Constrói dict manualmente
+```
+
+### Como usamos:
+
+```python
+self.output_parser = RobustJSONAgentOutputParser()
+self.agent = create_react_agent(
+    llm=self.llm,
+    tools=self.tools,
+    prompt=self.prompt,
+    output_parser=self.output_parser  # Adiciona parser custom
+)
+```
+
+**Arquivos**: Todos os agents em `src/agents/*_agent.py`
+
+---
+
+## 13. Early Stopping e Prevenção de Loops
+
+### O que é?
+Mecanismo para evitar que agents entrem em loops infinitos.
+
+### Implementação:
+
+```python
+self.agent_executor = AgentExecutor(
+    agent=self.agent,
+    tools=self.tools,
+    max_iterations=3,  # Limita número de ações
+    early_stopping_method="force"  # Para ao atingir limite
+)
+```
+
+### Estratégias aplicadas:
+1. **max_iterations**: Limite de ações por agent
+2. **Prompts claros**: "Use cada tool APENAS UMA VEZ"
+3. **Early stopping**: Força parada quando necessário
+
+### Por que é importante?
+- Evita custos excessivos de API
+- Previne timeouts
+- Garante resposta em tempo razoável
+
+---
+
+## 14. Conditional Workflows
 
 ### Implementação de Lógica Condicional:
 
@@ -418,7 +510,7 @@ else:
 
 ---
 
-## 13. Pydantic Schemas
+## 15. Pydantic Schemas
 
 ### O que é?
 Validação de dados estruturados em Python.
@@ -440,7 +532,7 @@ class ValidarDadosClienteInput(BaseModel):
 
 ---
 
-## 14. Mock Services para Testing
+## 16. Mock Services para Testing
 
 ### Por que Mocks?
 Permite testar sem dependências externas:
@@ -461,7 +553,7 @@ Em produção, trocaríamos pelos clients reais das APIs.
 
 ---
 
-## 15. Facade Pattern
+## 17. Facade Pattern
 
 ### O que é?
 Interface simplificada para sistemas complexos.
@@ -486,11 +578,12 @@ Facilita adoção e uso do sistema.
 
 | Arquivo | Conceitos Principais |
 |---------|---------------------|
-| `tools/customer_tools.py` | Tools, Pydantic Schemas, API Integration |
+| `tools/customer_tools.py` | Tools, Pydantic Schemas, StructuredTool |
 | `tools/inventory_tools.py` | Stateful Tools, Side Effects |
 | `tools/document_tools.py` | RAG, Knowledge Base, Document Understanding |
+| `agents/output_parser_fix.py` | Custom Output Parser, Error Recovery |
 | `agents/customer_validator_agent.py` | ReAct Agent, Prompt Engineering, Temperature |
-| `agents/eligibility_validator_agent.py` | Business Rules Engine, Multi-Tool Usage |
+| `agents/eligibility_validator_agent.py` | Business Rules Engine, Early Stopping |
 | `agents/decision_agent.py` | Decision Agent, Consolidation |
 | `orchestrator.py` | Orchestration, Conditional Workflows, Observability |
 | `examples/run_exchange_journey.py` | End-to-End Testing, Multiple Scenarios |

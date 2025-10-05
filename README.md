@@ -30,13 +30,14 @@ Validação Elegibilidade → Classificação Troca → [Estoque] → Decisão F
 ```
 agentic-playground/
 ├── src/
-│   ├── agents/              # 6 Agents especializados
+│   ├── agents/              # 6 Agents especializados + Custom Parser
 │   │   ├── customer_validator_agent.py
 │   │   ├── document_analyzer_agent.py
 │   │   ├── eligibility_validator_agent.py
 │   │   ├── exchange_classifier_agent.py
 │   │   ├── inventory_validator_agent.py
-│   │   └── decision_agent.py
+│   │   ├── decision_agent.py
+│   │   └── output_parser_fix.py  # Parser robusto para JSON
 │   ├── tools/               # LangChain Tools
 │   │   ├── customer_tools.py
 │   │   ├── inventory_tools.py
@@ -48,9 +49,11 @@ agentic-playground/
 │   │   └── synthetic_docs/  # Documentos sintéticos
 │   └── orchestrator.py      # Orquestrador da jornada
 ├── examples/
-│   └── run_exchange_journey.py  # Exemplos de uso
+│   └── run_exchange_journey.py  # 4 cenários de exemplo
+├── README.md                # Documentação principal
 ├── CONCEITOS.md             # Explicação dos conceitos
-└── INSTRUCTIONS.md          # Caso de uso original
+├── QUICKSTART.md            # Guia rápido de 3 passos
+└── requirements.txt         # Dependências Python
 ```
 
 ### Agents Especializados
@@ -73,35 +76,24 @@ agentic-playground/
 
 ### Instalação
 
-**Opção 1: Script automático (Recomendado)**
-
 ```bash
-# Crie ambiente virtual
+# 1. Crie ambiente virtual
 python3 -m venv venv
 source venv/bin/activate  # Linux/Mac
 # ou
 venv\Scripts\activate  # Windows
 
-# Execute o instalador
-./install.sh
-```
+# 2. Instale dependências
+pip install -r requirements.txt
 
-**Opção 2: Manual**
-
-```bash
-# Crie ambiente virtual
-python3 -m venv venv
-source venv/bin/activate
-
-# Instale dependências
-pip install langchain langchain-groq langchain-community python-dotenv pydantic
-
-# Configure .env
+# 3. Configure .env
 cp .env.example .env
 # Edite .env e adicione sua GROQ_API_KEY
 ```
 
 Obtenha sua API key gratuita em: https://console.groq.com/keys
+
+**Veja guia detalhado em [QUICKSTART.md](./QUICKSTART.md)**
 
 ## Como Usar
 
@@ -121,7 +113,7 @@ protocolo = {
     "produto_original": {
         "codigo": "PROD-001",
         "descricao": "Smartphone XYZ Pro",
-        "data_compra": "2024-08-15"
+        "data_compra": "2025-09-20"
     },
     "motivo_troca": "produto_defeituoso",
     "descricao_problema": "Tela preta, não liga",
@@ -169,6 +161,8 @@ Este projeto é uma demonstração educacional de padrões e conceitos modernos:
 8. **Error Handling** - Tratamento gracioso de erros
 9. **Observability** - Logging e auditoria completa
 10. **Temperature Control** - Determinismo em decisões críticas
+11. **Custom Output Parser** - Parser robusto para JSON mal formatado
+12. **Early Stopping** - Prevenção de loops infinitos
 
 **Leia [CONCEITOS.md](./CONCEITOS.md) para explicação detalhada de cada conceito**
 
@@ -261,10 +255,10 @@ Qualquer falha interrompe a jornada e rejeita a troca.
 
 ### Adicionar Nova Tool
 
-1. Crie função em `src/tools/categoria_tools.py`
-2. Herde de `BaseTool`
-3. Defina `name`, `description` e `args_schema`
-4. Implemente `_run()`
+1. Crie função privada (ex: `_minha_tool`) em `src/tools/categoria_tools.py`
+2. Crie schema Pydantic para os argumentos
+3. Use `StructuredTool.from_function()` para criar a tool
+4. Adicione ao getter correspondente (ex: `get_customer_tools()`)
 
 ## Métricas e Performance
 
@@ -287,12 +281,12 @@ Com Groq (free tier):
 
 ## Limitações Atuais (MVP)
 
-- Apenas cenário feliz implementado
 - Mocks ao invés de APIs reais
 - Análise de imagem não implementada (apenas simulada)
 - Sem persistência em banco de dados
 - Sem interface de usuário
 - Sem autenticação/autorização
+- Documentos sintéticos (não lê PDFs reais)
 
 ## Próximos Passos
 
@@ -315,8 +309,8 @@ MIT License - Sinta-se livre para usar em projetos educacionais ou comerciais.
 ## Suporte
 
 - **Início Rápido**: [QUICKSTART.md](./QUICKSTART.md) - Guia de 3 passos
-- **Troubleshooting**: [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) - Soluções para problemas comuns
 - **Conceitos**: [CONCEITOS.md](./CONCEITOS.md) - Explicação detalhada dos conceitos
+- **Exemplos**: `examples/run_exchange_journey.py` - 4 cenários completos
 - **Issues**: Abra uma issue no GitHub
 
 ## Agradecimentos

@@ -10,7 +10,7 @@ python3 -m venv venv
 source venv/bin/activate
 
 # Instalar pacotes
-pip install langchain langchain-groq langchain-community python-dotenv pydantic
+pip install -r requirements.txt
 ```
 
 ### 2. Configurar API Key
@@ -164,17 +164,17 @@ print(resultado)
 
 ### Erro: "No module named 'langchain'"
 ```bash
-pip install langchain langchain-groq
+pip install -r requirements.txt
 ```
 
 ### Erro: "Model decommissioned"
-Use modelo atualizado: `llama-3.3-70b-versatile`
+Use modelo atualizado: `llama-3.3-70b-versatile` (já configurado)
 
-### Erro: "field required"
-Veja [TROUBLESHOOTING.md](./TROUBLESHOOTING.md)
+### Erro: "GROQ_API_KEY not found"
+Configure o arquivo `.env` com sua chave da Groq
 
 ### Erro: "Rate limit"
-Aguarde alguns segundos entre requisições
+Aguarde alguns segundos entre requisições (free tier tem limites)
 
 ## Próximos Passos
 
@@ -193,8 +193,8 @@ Aguarde alguns segundos entre requisições
 ## Ajuda
 
 - **Documentação completa:** [README.md](./README.md)
-- **Troubleshooting:** [TROUBLESHOOTING.md](./TROUBLESHOOTING.md)
 - **Conceitos aplicados:** [CONCEITOS.md](./CONCEITOS.md)
+- **Exemplos:** `examples/run_exchange_journey.py`
 
 ---
 
