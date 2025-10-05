@@ -1,0 +1,39 @@
+{
+  "protocolo": "TROCA-2024-98765",
+  "data_abertura": "2024-10-01T10:30:00",
+  "tipo_solicitacao": "troca_produto",
+  "cliente": {
+    "cpf": "123.456.789-00",
+    "nome": "João Silva Santos",
+    "email": "joao.silva@email.com",
+    "telefone": "(11) 98765-4321"
+  },
+  "produto_original": {
+    "codigo": "PROD-001",
+    "descricao": "Smartphone XYZ Pro",
+    "numero_nota_fiscal": "NF-2024-456789",
+    "data_compra": "2024-08-15",
+    "valor_pago": 2499.90
+  },
+  "motivo_troca": "produto_defeituoso",
+  "descricao_problema": "Aparelho apresenta tela preta após 2 semanas de uso. Não liga mesmo após carregamento completo.",
+  "tipo_troca_desejado": "troca_outro_produto",
+  "produto_desejado": {
+    "codigo": "PROD-003",
+    "descricao": "Fone Bluetooth Premium"
+  },
+  "documentos_anexados": [
+    {
+      "tipo": "foto_produto",
+      "descricao": "Foto do smartphone mostrando tela preta",
+      "arquivo": "foto_produto_defeito.jpg"
+    },
+    {
+      "tipo": "nota_fiscal",
+      "descricao": "Nota fiscal da compra original",
+      "arquivo": "nota_fiscal.pdf"
+    }
+  ],
+  "status": "aguardando_analise",
+  "prioridade": "media"
+}

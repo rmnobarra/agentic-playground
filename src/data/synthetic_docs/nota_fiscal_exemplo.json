@@ -1,0 +1,42 @@
+{
+  "numero_nota": "NF-2024-456789",
+  "serie": "001",
+  "data_emissao": "2025-09-20",
+  "chave_acesso": "35240812345678901234567890123456789012345678",
+  "emitente": {
+    "razao_social": "Varejo Tech LTDA",
+    "cnpj": "12.345.678/0001-99",
+    "inscricao_estadual": "123.456.789.012",
+    "endereco": "Av. Comercial, 1000 - São Paulo/SP"
+  },
+  "destinatario": {
+    "nome": "João Silva Santos",
+    "cpf": "123.456.789-00",
+    "endereco": "Rua das Flores, 123, Apto 45 - Centro - São Paulo/SP",
+    "cep": "01234-567"
+  },
+  "produtos": [
+    {
+      "codigo": "PROD-001",
+      "descricao": "Smartphone XYZ Pro",
+      "ncm": "85171231",
+      "quantidade": 1,
+      "unidade": "UN",
+      "valor_unitario": 2499.90,
+      "valor_total": 2499.90,
+      "categoria": "Eletrônicos"
+    }
+  ],
+  "totais": {
+    "valor_produtos": 2499.90,
+    "valor_frete": 0.00,
+    "valor_desconto": 0.00,
+    "valor_total": 2499.90
+  },
+  "pagamento": {
+    "forma": "Cartão de Crédito",
+    "parcelas": 3,
+    "valor_parcela": 833.30
+  },
+  "informacoes_adicionais": "Garantia de 12 meses. Direito de arrependimento em 7 dias conforme CDC."
+}
