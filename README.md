@@ -1,6 +1,8 @@
-# Jornada Agêntica - Sistema de Troca de Produtos
+# 🤖 Jornada Agêntica - Sistema de Troca de Produtos
 
 MVP de sistema agêntico para automação de processos de backoffice de varejo, focado em trocas de produtos.
+
+> **🌐 NOVIDADE**: Agora com interface web interativa! Execute `streamlit run app.py` para usar no browser.
 
 ## Visão Geral
 
@@ -97,7 +99,26 @@ Obtenha sua API key gratuita em: https://console.groq.com/keys
 
 ## Como Usar
 
-### Exemplo Rápido
+### 🌐 Interface Web (Recomendado)
+
+Execute a interface web com **Streamlit**:
+
+```bash
+streamlit run app.py
+```
+
+Acesse no browser: **http://localhost:8501**
+
+**Funcionalidades:**
+- ✅ Interface visual para criar solicitações
+- 🎯 4 cenários pré-configurados
+- 📊 Visualização em tempo real da jornada
+- 🔍 Detalhes expandíveis de cada agent
+- 📈 Métricas e status coloridos
+
+**Veja guia completo em [RUN_WEB.md](./RUN_WEB.md)**
+
+### 💻 Exemplo via Código
 
 ```python
 from src.orchestrator import ExchangeJourneyOrchestrator
@@ -132,18 +153,20 @@ resultado = orchestrator.execute_journey(protocolo)
 orchestrator.save_journey_report(resultado)
 ```
 
-### Executando Exemplos Completos
+### 📝 Executando via Script Python
 
 ```bash
 cd examples
 python run_exchange_journey.py
 ```
 
-Este script executa 4 cenários:
+Este script executa 4 cenários e gera arquivos JSON:
 1. Troca Aprovada - Produto defeituoso, todos os requisitos OK
 2. Troca Rejeitada - Fora do prazo
 3. Sem Estoque - Produto desejado indisponível
 4. Dados Inválidos - Falha na validação de cliente
+
+**Melhor usar a interface web para visualização interativa!**
 
 ## Conceitos de AI Engineering Aplicados
 
@@ -292,15 +315,16 @@ Com Groq (free tier):
 
 ### Features Planejadas
 
+- ✅ **Interface web (Streamlit)** - IMPLEMENTADO!
 - Integração com APIs reais
 - Análise de imagens (OCR de documentos)
-- Interface web (Streamlit/Gradio)
 - Banco de dados (PostgreSQL)
 - Notificações (email/SMS)
-- Dashboard de métricas
+- Dashboard de métricas avançado
 - Human-in-the-loop para casos duvidosos
 - A/B testing de prompts
 - LangGraph para workflows mais complexos
+- Deploy em cloud (Streamlit Cloud/Railway)
 
 ## Licença
 
@@ -308,9 +332,10 @@ MIT License - Sinta-se livre para usar em projetos educacionais ou comerciais.
 
 ## Suporte
 
+- **Interface Web**: [RUN_WEB.md](./RUN_WEB.md) - Como usar a interface Streamlit
 - **Início Rápido**: [QUICKSTART.md](./QUICKSTART.md) - Guia de 3 passos
 - **Conceitos**: [CONCEITOS.md](./CONCEITOS.md) - Explicação detalhada dos conceitos
-- **Exemplos**: `examples/run_exchange_journey.py` - 4 cenários completos
+- **Exemplos**: `examples/run_exchange_journey.py` - 4 cenários via script
 - **Issues**: Abra uma issue no GitHub
 
 ## Agradecimentos

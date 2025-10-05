@@ -25,7 +25,15 @@ cp .env.example .env
 
 **Obter chave gratuita:** https://console.groq.com/keys
 
-### 3. Executar Exemplo
+### 3. Executar Interface Web
+
+```bash
+streamlit run app.py
+```
+
+Acesse: **http://localhost:8501**
+
+**OU** execute via script:
 
 ```bash
 cd examples
@@ -178,9 +186,9 @@ Aguarde alguns segundos entre requisições (free tier tem limites)
 
 ## Próximos Passos
 
-1. **Leia os conceitos:** [CONCEITOS.md](./CONCEITOS.md)
-2. **Entenda a arquitetura:** [README.md](./README.md)
-3. **Execute exemplos completos:** `cd examples && python run_exchange_journey.py`
+1. **Use a interface web:** `streamlit run app.py` - [RUN_WEB.md](./RUN_WEB.md)
+2. **Leia os conceitos:** [CONCEITOS.md](./CONCEITOS.md)
+3. **Entenda a arquitetura:** [README.md](./README.md)
 4. **Customize:** Adicione produtos, regras e cenários
 
 ## Dicas
