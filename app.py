@@ -203,25 +203,31 @@ with tab1:
                 ("3️⃣ Validação de Elegibilidade", "validacao_elegibilidade"),
                 ("4️⃣ Classificação de Troca", "classificacao_troca"),
                 ("5️⃣ Validação de Estoque", "validacao_estoque"),
-                ("6️⃣ Decisão Final", "decisao_final")
+                ("6️⃣ Decisão Final", "decisao")  # Mudou para "decisao" que é o dict
             ]
 
             for titulo, chave in etapas:
                 with st.expander(titulo, expanded=False):
                     etapa_resultado = resultado.get(chave, {})
 
+                    # Tratamento especial para tipos diferentes
                     if etapa_resultado:
-                        status = etapa_resultado.get("status", "N/A")
-                        agent = etapa_resultado.get("agent", "N/A")
+                        # Se for um dict válido
+                        if isinstance(etapa_resultado, dict):
+                            status = etapa_resultado.get("status", etapa_resultado.get("decisao_final", "N/A"))
+                            agent = etapa_resultado.get("agent", "N/A")
 
-                        col_a, col_b = st.columns([1, 3])
-                        with col_a:
-                            st.metric("Status", status.upper())
-                            st.caption(f"Agent: {agent}")
+                            col_a, col_b = st.columns([1, 3])
+                            with col_a:
+                                st.metric("Status", str(status).upper())
+                                st.caption(f"Agent: {agent}")
 
-                        with col_b:
-                            output = etapa_resultado.get("output", "Sem detalhes")
-                            st.text_area("Saída do Agent", output, height=200, key=f"output_{chave}")
+                            with col_b:
+                                output = etapa_resultado.get("output", "Sem detalhes")
+                                st.text_area("Saída do Agent", output, height=200, key=f"output_{chave}")
+                        else:
+                            # Se for string ou outro tipo
+                            st.info(f"Resultado: {etapa_resultado}")
                     else:
                         st.info("Etapa não executada (condicional)")
 
